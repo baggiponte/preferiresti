@@ -13,7 +13,7 @@ main{max-width:1160px;margin:auto;display:grid;grid-template-columns:360px 1fr;m
 @media(min-width:1000px) and (min-height:900px){canvas,.preview-meta{width:min(100%,405px)}}
 @media(max-width:720px){header{padding:0 18px;height:68px}.brand span{display:none}.export{padding:10px 12px;font-size:12px}main{grid-template-columns:1fr}.preview-area{grid-row:1;padding:24px 20px}.preview-area canvas,.preview-meta{width:min(100%,260px)}aside{border-right:0;border-top:1px solid #2b2b30;padding:26px 24px;max-width:440px;width:100%;margin:auto}.intro{margin-bottom:24px}}
 
-.header-actions{display:flex;align-items:center;gap:12px}.theme-toggle,.add-option{background:#28282e;color:#eee;border:1px solid #42424c;border-radius:8px;padding:10px 12px}.add-option{width:100%;font-size:13px}.option-heading{display:flex;justify-content:space-between;align-items:center}.remove-option{border:0;background:none;color:inherit;cursor:pointer;font-size:12px;padding:4px}.option-heading+textarea{margin-top:7px}
+.header-actions{display:flex;align-items:center;gap:12px}.add-option{background:#28282e;color:#eee;border:1px solid #42424c;border-radius:8px;padding:10px 12px}.add-option{width:100%;font-size:13px}.option-heading{display:flex;justify-content:space-between;align-items:center}.remove-option{border:0;background:none;color:inherit;cursor:pointer;font-size:12px;padding:4px}.option-heading+textarea{margin-top:7px}
 :root[data-theme=light]{color-scheme:light;background:#fafafa;color:#202025}
 [data-theme=light] header{background:#fff;border-color:#dedee5}
 [data-theme=light] aside{border-color:#dedee5}
@@ -21,17 +21,18 @@ main{max-width:1160px;margin:auto;display:grid;grid-template-columns:360px 1fr;m
 [data-theme=light] .color-field,[data-theme=light] .field input,[data-theme=light] .field textarea{background:#fff;border-color:#d8d8e0;color:#25252b}
 [data-theme=light] .hex,[data-theme=light] .row output,[data-theme=light] .swap{color:#50505c}
 [data-theme=light] .export{background:#222228;color:white}
-[data-theme=light] .theme-toggle,[data-theme=light] .add-option,[data-theme=light] .font-button{background:#fff;color:#33333d;border-color:#d8d8e0}
+[data-theme=light] .add-option,[data-theme=light] .font-button{background:#fff;color:#33333d;border-color:#d8d8e0}
 [data-theme=light] .preset{border-color:#fafafa}
 [data-theme=light] .preset[aria-pressed=true]{outline-color:#25252b}
 [data-theme=light] .preview-area{background:radial-gradient(ellipse at center,#eae5ee,transparent 70%)}
 [data-theme=light] .details{border-color:#dedee5}
 [data-theme=light] details a{color:#7c348e}
-@media(max-width:480px){.brand strong{font-size:16px}.header-actions{gap:7px}.theme-toggle{padding:9px;font-size:12px}.brand{gap:7px}}
+@media(max-width:480px){.brand strong{font-size:16px}.header-actions{gap:7px}.brand .logo{display:none}.brand{gap:7px}}
+.theme-picker{display:flex;gap:2px;padding:3px;border:1px solid #42424c;border-radius:9px;background:#1c1c20}.theme-picker button{display:grid;place-items:center;width:30px;height:30px;padding:6px;border:0;border-radius:5px;background:transparent;color:#9999a3}.theme-picker button:hover{color:#fff}.theme-picker button[aria-pressed=true]{background:#41414c;color:#fff}.theme-picker svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}[data-theme=light] .theme-picker{background:#f5f5f8;border-color:#d8d8e0}[data-theme=light] .theme-picker button{color:#72727e}[data-theme=light] .theme-picker button:hover{color:#202025}[data-theme=light] .theme-picker button[aria-pressed=true]{background:#fff;color:#202025;box-shadow:0 1px 4px #0002}
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="logo" aria-hidden="true">↗</div><strong>preferiresti.</strong><span>Il tuo prossimo dilemma.</span></div><div class="header-actions"><button class="theme-toggle" id="theme" type="button" aria-label="Attiva tema chiaro">Tema chiaro</button><button class="export" id="download" disabled><span aria-hidden="true">↓</span> Scarica PNG</button></div></header>
+<header><div class="brand"><div class="logo" aria-hidden="true">↗</div><strong>preferiresti.</strong><span>Il tuo prossimo dilemma.</span></div><div class="header-actions"><div class="theme-picker" role="group" aria-label="Tema dell’editor"><button type="button" data-theme-mode="light" aria-label="Tema chiaro" title="Chiaro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button><button type="button" data-theme-mode="dark" aria-label="Tema scuro" title="Scuro" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14A9 9 0 0 1 10 3.5 9 9 0 1 0 20.5 14Z"/></svg></button><button type="button" data-theme-mode="system" aria-label="Tema di sistema" title="Sistema" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M12 17v4m-4 0h8"/></svg></button></div><button class="export" id="download" disabled><span aria-hidden="true">↓</span> Scarica PNG</button></div></header>
 <main>
 <aside>
 <h1>Le tue opzioni. Una storia.</h1><p class="intro">Scegli lo sfondo, scrivi il dilemma.<br>La tua storia è già pronta.</p>
@@ -117,10 +118,17 @@ $('reset').addEventListener('click',()=>{state=freshState();sync();save();$('sta
 $('font').addEventListener('change',async event=>{const file=event.target.files[0];if(!file)return;try{const face=await new FontFace('CustomStory'+Date.now(),await file.arrayBuffer()).load();if(customFace)document.fonts.delete(customFace);customFace=face;document.fonts.add(face);fontFamily=face.family;$('fontName').textContent=file.name+' · ricaricalo alla prossima apertura';render();$('status').textContent='Font caricato.'}catch{$('status').textContent='Impossibile leggere questo font. Prova un file .ttf, .otf o .woff.'}event.target.value=''});
 $('resetFont').addEventListener('click',()=>{fontFamily='Story';if(customFace){document.fonts.delete(customFace);customFace=null}$('fontName').textContent='Barlow Condensed · incluso';render()});
 $('download').addEventListener('click',()=>{render();canvas.toBlob(blob=>{if(!blob){$('status').textContent='Esportazione non riuscita. Riprova.';return}const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='preferiresti-'+new Date().toISOString().slice(0,10)+'.png';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);$('status').textContent='PNG pronto · 1080 × 1920 px.'},'image/png')});
-let theme=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
-try{const savedTheme=localStorage.getItem('preferiresti.theme');if(['light','dark'].includes(savedTheme))theme=savedTheme}catch{}
-function applyTheme(){document.documentElement.dataset.theme=theme;const label=theme==='dark'?'Tema chiaro':'Tema scuro';$('theme').textContent=label;$('theme').setAttribute('aria-label','Attiva '+label.toLowerCase())}
-$('theme').addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';applyTheme();try{localStorage.setItem('preferiresti.theme',theme)}catch{}});
+const systemTheme=matchMedia('(prefers-color-scheme: light)');
+let themeMode='system';
+try{const savedTheme=localStorage.getItem('preferiresti.theme');if(['light','dark','system'].includes(savedTheme))themeMode=savedTheme}catch{}
+function applyTheme(){
+ document.documentElement.dataset.theme=themeMode==='system'?(systemTheme.matches?'light':'dark'):themeMode;
+ document.querySelectorAll('[data-theme-mode]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.themeMode===themeMode)));
+}
+document.querySelectorAll('[data-theme-mode]').forEach(button=>button.addEventListener('click',()=>{
+ themeMode=button.dataset.themeMode;applyTheme();try{localStorage.setItem('preferiresti.theme',themeMode)}catch{}
+}));
+systemTheme.addEventListener('change',()=>{if(themeMode==='system')applyTheme()});
 applyTheme();
 sync();document.fonts.load('62px Story').then(()=>{ready=true;render();$('download').disabled=false}).catch(()=>{$('status').textContent='Il font incluso non è disponibile. Carica un font per continuare.'});
 </script>

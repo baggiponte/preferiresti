@@ -7,7 +7,7 @@ Apri `index.html` con doppio clic: funziona offline, senza installazioni o serve
 - Sei gradienti predefiniti e colori personalizzabili in alto e in basso.
 - Due opzioni iniziali; **Aggiungi opzione** permette di aggiungerne altre e rimuoverle.
 - Dimensione del testo con adattamento automatico per i testi lunghi.
-- Tema chiaro e scuro: segue inizialmente il sistema, poi ricorda la scelta.
+- Selettore sole / luna / sistema: ricorda la scelta e segue automaticamente i cambiamenti del sistema quando selezionato.
 - Esportazione PNG da **1080 × 1920** pixel, senza watermark.
 - Bozza salvata nel browser quando il salvataggio locale è disponibile.
 
