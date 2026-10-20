@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.cloudflare/
+.wrangler/
+
+# Secret environment files
+.env
+.env.*
+*.local
+.dev.vars

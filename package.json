@@ -1,0 +1,16 @@
+{
+  "name": "preferiresti",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.14.0",
+  "scripts": {
+    "build": "node scripts/build.mjs && cf build",
+    "deploy": "node scripts/build.mjs && cf deploy",
+    "check": "node scripts/build.mjs && cf deploy --dry-run",
+    "dev": "node scripts/build.mjs && cf dev"
+  },
+  "devDependencies": {
+    "cf": "1.0.0-beta.18",
+    "wrangler": "4.151.1"
+  }
+}
